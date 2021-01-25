@@ -1,0 +1,18 @@
+{
+  "name": "myajaxcall",
+  "version": "1.0.1",
+  "description": "Function for AJAX-Calls",
+  "main": "myajax_bundle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ajax",
+    "ajax",
+    "call",
+    "xhr",
+    "XMLHttpRequest"
+  ],
+  "author": "Jürgen Torsten Lehmann",
+  "license": "ISC"
+}
