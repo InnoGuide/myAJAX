@@ -1,6 +1,6 @@
 {
   "name": "myajaxcall",
-  "version": "1.0.3",
+  "version": "1.0.8",
   "description": "Function for AJAX-Calls",
   "main": "myajax_bundle.js",
   "scripts": {

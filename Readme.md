@@ -1,5 +1,7 @@
-Klicke hier für die 
-[<b><i>deutsche Version</i></b>]<a name="Deutsch"></a>
+# Klicke hier für die 
+
+[<h1>deutsche Version</h1>](#Deutsche-Version)
+
 
 # What is myAJAX?
 myAJAX is a function which you can help to call up AJAX calls in a simple way!
@@ -180,8 +182,10 @@ ___
     </script>
 </body>
 </html>
-___
-[link text](#Deutsch)
+```
+<br>
+
+# Deutsche Version 
 
 
 # Was ist myAJAX?
