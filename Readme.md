@@ -1,7 +1,8 @@
-# Klicke hier für die 
+Klicke hier für die 
 
-[<h1>deutsche Version</h1>](#Deutsche-Version)
+##[deutsche Version](#Deutsch)
 
+<br><br>
 
 # What is myAJAX?
 myAJAX is a function which you can help to call up AJAX calls in a simple way!
@@ -185,8 +186,7 @@ ___
 ```
 <br>
 
-# Deutsche Version 
-
+# Deutsch
 
 # Was ist myAJAX?
 myAJAX ist eine Funktion mit dessen Hilfe Sie, auf eine einfache Weise, AJAX-Calls aufrufen können!
