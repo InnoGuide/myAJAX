@@ -1,6 +1,5 @@
-Klicke hier für die 
 
-##[deutsche Version](#Deutsch)
+Klicke hier für die [deutsche Beschreibung!](#deutsch)
 
 <br><br>
 
@@ -26,7 +25,7 @@ Simply link the script tag as follows:
 ```
 <html>
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/@tlehmann/my_ajax@1.0.0/myajax_bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/myajaxcall@1.0.23/myajax_bundle.min.js"></script>
 </head>
 <body>
 </body>
@@ -38,12 +37,12 @@ Simply link the script tag as follows:
      `npm init` <br> <br>
 2. Install the package
 
-     `npm i @ tlehmann / my_ajax` <br> <br>
+     `npm i myajaxcall` <br> <br>
 3. Include (e.g. in the index.html)
 ```
 <html>
 <head>
-    <script src="node_modules/@tlehmann/my_ajax/myajax_bundle.js"></script>
+    <script src="node_modules/myajaxcall/myajax_bundle.js"></script>
 </head>
 <body>
 </body>
@@ -74,7 +73,7 @@ ___
 ```
 <html>
 <head>
-    <script src="node_modules/@tlehmann/my_ajax/myajax_bundle.js"></script>
+    <script src="node_modules/myajaxcall/myajax_bundle.js"></script>
 </head>
 <body>
     <h1>Hallo <span id="content"></span>!</h1>
@@ -107,7 +106,7 @@ ___
 ```
 <html>
 <head>
-    <script src="node_modules/@tlehmann/my_ajax/myajax_bundle.js"></script>
+    <script src="node_modules/myajaxcall/myajax_bundle.js"></script>
 </head>
 <body>
     <form method="GET" action="showInput.php" id="form1">
@@ -163,7 +162,7 @@ ___
 ```
 <html>
 <head>
-    <script src="node_modules/@tlehmann/my_ajax/myajax_bundle.js"></script>
+    <script src="node_modules/myajaxcall/myajax_bundle.js"></script>
 </head>
 <body>
     <button id="btn">Data</button> 
@@ -184,14 +183,14 @@ ___
 </body>
 </html>
 ```
-<br>
+
 
 # Deutsch
 
 # Was ist myAJAX?
 myAJAX ist eine Funktion mit dessen Hilfe Sie, auf eine einfache Weise, AJAX-Calls aufrufen können!
 
-Sie können Dateien (.html, .php, .txt etc.) in den Scope, einer aufgerufenen Webseite, an einen definierten Punkt (ID) im DOM-Content (HTML) einbinden.
+Sie können Dateien (.html, .php, .txt etc.) in den Scope einer aufgerufenen Webseite an einen definierten Punkt (ID) im DOM-Content (HTML) einbinden.
 
 
 ## Vorteile!
@@ -202,7 +201,7 @@ Bei der Verwendung dieser Funktion:
 * Das src-Attribut wird berücksichtigt. Die benannte Datei wird eingebunden und ausgeführt, z.B.: 
 
     `<script src="myScript.js"><script>` 
-* Formulardaten werden mit "GET" oder "POST" beim Aufruf übermittelt werden,
+* Formulardaten werden mit "GET" oder "POST" beim Aufruf übermittelt,
 * kann eine Callback-Funktion aufgerufen werden, die Zugriff auf alle wesentlichen Daten hat (siehe Unten)!<br><br><br><br>
 # Installation
 ## für Testzwecke
@@ -210,7 +209,7 @@ Verlinken Sie den Script-Tag einfach wie folgt:
 ```
 <html>
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/@tlehmann/my_ajax@1.0.0/myajax_bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/myajaxcall@1.0.22/myajax_bundle.min.js"></script>
 </head>
 <body>
 </body>
@@ -222,13 +221,13 @@ Verlinken Sie den Script-Tag einfach wie folgt:
     `npm init`<br><br>
 2. Installieren des Packages
 
-    `npm i @tlehmann/my_ajax`<br><br>
+    `npm i myajaxcall`<br><br>
 3. Einbinden (z.B. in die index.html)
 
 ```
 <html>
 <head>
-    <script src="node_modules/@tlehmann/my_ajax/myajax_bundle.js"></script>
+    <script src="node_modules/myajaxcall/myajax_bundle.js"></script>
 </head>
 <body>
 </body>
@@ -259,7 +258,7 @@ ___
 ```
 <html>
 <head>
-    <script src="node_modules/@tlehmann/my_ajax/myajax_bundle.js"></script>
+    <script src="node_modules/myajaxcall/myajax_bundle.js"></script>
 </head>
 <body>
     <h1>Hallo <span id="content"></span>!</h1>
@@ -292,7 +291,7 @@ bitte nicht das <i><b>event.preventDefault()</b></i> vergessen!<br>
 ```
 <html>
 <head>
-    <script src="node_modules/@tlehmann/my_ajax/myajax_bundle.js"></script>
+    <script src="node_modules/myajaxcall/myajax_bundle.js"></script>
 </head>
 <body>
     <form method="GET" action="showInput.php" id="form1">
@@ -351,7 +350,7 @@ ___
 ```
 <html>
 <head>
-    <script src="node_modules/@tlehmann/my_ajax/myajax_bundle.js"></script>
+    <script src="node_modules/myajaxcall/myajax_bundle.js"></script>
 </head>
 <body>
     <button id="btn">Data</button> 

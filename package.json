@@ -1,13 +1,12 @@
 {
   "name": "myajaxcall",
-  "version": "1.0.14",
+  "version": "1.0.23",
   "description": "Function for AJAX-Calls",
   "main": "myajax_bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "ajax",
     "ajax",
     "call",
     "xhr",
