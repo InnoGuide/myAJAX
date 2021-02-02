@@ -1,5 +1,8 @@
 
 Klicke hier für die [deutsche Beschreibung!](#deutsch)
+## New in this version!
+* authentication protection (user/password)
+* sends/receives headers
 
 <br><br>
 
@@ -25,7 +28,7 @@ Simply link the script tag as follows:
 ```
 <html>
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/myajaxcall@1.0.23/myajax_bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/myajaxcall@1.1.0/myajax_bundle.min.js"></script>
 </head>
 <body>
 </body>
@@ -52,7 +55,7 @@ Simply link the script tag as follows:
 # Working method and examples
 The function is called with:
 
-`lib.myAJAX(filename, id, form, callback)`
+`lib.myAJAX(filename, id, form, callback, user, password, headers)`
 
 Not all parameters are necessary! If a parameter has to be skipped, you have to fill this up with <b>null</b>. Example:
 
@@ -134,14 +137,16 @@ The transmission method (POST / GET) is determined automatically by <i> lib.myAJ
 # Callback function
 There is the possibility of the function <i> libmyAJAX () </i> to integrate a callback function, which has access to all information that the executed AJAX call has determined.
 ## Structure of the callback function
-`functionsname(response, responseText, responseXML, responseURL, responseType)`
+`functionsname(response, responseText, responseXML, responseURL, responseType, responseHeaders)`
 * <b>response:</b> property returns the response's body content as an ArrayBuffer, Blob, Document, JavaScript Object, or DOMString, depending on the value of the request's responseType property.
 * <b>responseText:</b> get the response data as a string
 * <b>responseXML:</b> get the response data as XML data
 * <b>responseURL:</b>  property returns the serialized URL of the response or the empty string if the URL is null. If the URL is returned, any URL fragment present in the URL will be stripped away. The value of responseURL will be the final URL obtained after any redirects. 
 * <b>responseType:</b>  is an enumerated string value specifying the type of data contained in the response.
+* <b>responseHeader:</b> all response headers (see example below)
+<br>
 
-## Example 3: receives JSON data from a PHP file.
+## Example 3: Callback, receives JSON data from a PHP file.
 ___
 <b>JSON.php</b>
 ```
@@ -184,9 +189,102 @@ ___
 </html>
 ```
 
+## Example 4: Authentication, user/password.
+___
+<b>index.html</b> 
+
+```
+<html>
+<head>
+    <script src="node_modules/myajaxcall/myajax_bundle.js"></script>
+</head>
+<body>
+    <button id="btn">Data</button> 
+    <div id="data"></div>
+    <script>
+      document.getElementById("btn").addEventListener("click",
+        function(){
+          let user = "admin";
+          let pwd = "1234";
+          new myAJAX("auth.php","data",null, null, user, pwd);    
+        })
+    </script>
+</body>
+</html>
+```
+<br><br>
+___
+<b>auth.php</b>
+```
+<?php
+    if (!isset($_SERVER['PHP_AUTH_USER'])) {
+        header('WWW-Authenticate: Basic realm="My Realm"');
+        header('HTTP/1.0 401 Unauthorized');
+        echo 'The second round get user and pwd!';
+        exit;
+    } else if ($_SERVER['PHP_AUTH_USER'] == "admin" and $_SERVER['PHP_AUTH_PW'] =="1234"){
+        echo "You logged in!";
+    } else{
+        echo "User or psw aren't correct!";
+    }
+?>
+```
+<br>
+
+## Example 5: Headers send.
+___
+<b>index.html</b> 
+
+```
+<html>
+<head>
+    <script src="node_modules/myajaxcall/myajax_bundle.js"></script>
+</head>
+<body>
+    <button id="btn">Data</button> 
+    <div id="data"></div>
+    <script>
+      document.getElementById("btn").addEventListener("click",
+        function(){
+          let user = "admin";
+          let pwd = "1234";
+          let headers = [
+                {header:"Content-type", value: "text/html"},
+                {header:"MyHeader", value: "nice header"}
+              ]
+          new myAJAX("auth.php",null, null, myCallback, user, pwd, headers);    
+        })
+        function myCallback(res,resTxt,resXML,resURL,resType, resHeaders){
+            document.getElementById("data").innerHTML=resHeaders;
+        }
+    </script>
+</body>
+</html>
+```
+<br><br>
+___
+<b>auth.php</b>
+```
+<?php
+    if (!isset($_SERVER['PHP_AUTH_USER'])) {
+        header('WWW-Authenticate: Basic realm="My Realm"');
+        header('HTTP/1.0 401 Unauthorized');
+        echo 'The second round get user and pwd!';
+        exit;
+    } else if ($_SERVER['PHP_AUTH_USER'] == "admin" and $_SERVER['PHP_AUTH_PW'] =="1234"){
+        echo "You logged in!";
+    } else{
+        echo "User or psw aren't correct! <br>";
+        echo getallheaders(); 
+    }
+?>
+```
 
 # Deutsch
-
+## Neu in dieser Version!
+* Authentifizierungsschutz (Benutzer/Passwort)
+* sendet / empfängt Header 
+<br><br>
 # Was ist myAJAX?
 myAJAX ist eine Funktion mit dessen Hilfe Sie, auf eine einfache Weise, AJAX-Calls aufrufen können!
 
@@ -202,14 +300,15 @@ Bei der Verwendung dieser Funktion:
 
     `<script src="myScript.js"><script>` 
 * Formulardaten werden mit "GET" oder "POST" beim Aufruf übermittelt,
-* kann eine Callback-Funktion aufgerufen werden, die Zugriff auf alle wesentlichen Daten hat (siehe Unten)!<br><br><br><br>
+* kann eine Callback-Funktion aufgerufen werden, die Zugriff auf alle wesentlichen Daten hat (siehe Unten)!
+<br><br><br><br>
 # Installation
 ## für Testzwecke
 Verlinken Sie den Script-Tag einfach wie folgt:  
 ```
 <html>
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/myajaxcall@1.0.22/myajax_bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/myajaxcall@1.1.0/myajax_bundle.min.js"></script>
 </head>
 <body>
 </body>
@@ -237,7 +336,7 @@ Verlinken Sie den Script-Tag einfach wie folgt:
 # Arbeitsweise und Beispiele
 Die Funktion wird aufgerufen mit:
 
-`lib.myAJAX(filename, id, form, callback)`
+`lib.myAJAX(filename, id, form, callback, user, password, headers)`
 
 Nicht alle Parameter sind notwendig! Falls ein Parameter übersprungen werden muss, wird dieser mit <b>null</b> aufgefüllt. Beispiel:
 
@@ -328,8 +427,9 @@ Es besteht die Möglichkeit der Funktion <i>libmyAJAX()</i> eine Callback-Funkti
 * <b>responseXML:</b> gibt den Wert als XML-Data zurück.
 * <b>responseURL:</b> Die Eigenschaft gibt die serialisierte URL der Antwort oder die leere Zeichenfolge zurück, wenn die URL null ist. Wenn die URL zurückgegeben wird, wird jedes in der URL vorhandene URL-Fragment entfernt. Der Wert von responseURL ist die endgültige URL, die nach Weiterleitungen erhalten wird.
 * <b>responseType:</b> ist eine Zeichenfolge, die den in der Antwort enthaltenen Datentyp angibt. 
+ * <b>responseHeader:</b> alle empfangenen Headers (siehe Beispiel unten)
 
-## Beispiel 3: empfängt JSON-Daten von einer PHP-Datei.
+## Beispiel 3: Callback,  empfängt JSON-Daten von einer PHP-Datei.
 ___
 <b>JSON.php</b>
 ```
@@ -370,4 +470,97 @@ ___
     </script>
 </body>
 </html>
+```
+<br>
+
+## Example 4: Authentifizierung, user/password.
+___
+<b>index.html</b> 
+
+```
+<html>
+<head>
+    <script src="node_modules/myajaxcall/myajax_bundle.js"></script>
+</head>
+<body>
+    <button id="btn">Data</button> 
+    <div id="data"></div>
+    <script>
+      document.getElementById("btn").addEventListener("click",
+        function(){
+          let user = "admin";
+          let pwd = "1234";  
+          new myAJAX("auth.php","data",null, null, user, pwd);    
+        })
+    </script>
+</body>
+</html>
+```
+<br><br>
+___
+<b>auth.php</b>
+```
+<?php
+    if (!isset($_SERVER['PHP_AUTH_USER'])) {
+        header('WWW-Authenticate: Basic realm="My Realm"');
+        header('HTTP/1.0 401 Unauthorized');
+        echo 'The second round get user and pwd!';
+        exit;
+    } else if ($_SERVER['PHP_AUTH_USER'] == "admin" and $_SERVER['PHP_AUTH_PW'] =="1234"){
+        echo "You logged in!";
+    } else{
+        echo "User or psw aren't correct!";
+    }
+?>
+```
+<br>
+
+## Example 5: Headers senden.
+___
+<b>index.html</b> 
+
+```
+<html>
+<head>
+    <script src="node_modules/myajaxcall/myajax_bundle.js"></script>
+</head>
+<body>
+    <button id="btn">Data</button> 
+    <div id="data"></div>
+    <script>
+      document.getElementById("btn").addEventListener("click",
+        function(){
+          let user = "admin";
+          let pwd = "1234";  
+          let headers = [
+                {header:"Content-type", value: "text/html"},
+                {header:"MyHeader", value: "nice header"}
+              ]
+          new myAJAX("auth.php",null, null, myCallback, user, pwd, headers);    
+        })
+        function myCallback(res,resTxt,resXML,resURL,resType, resHeaders){
+            document.getElementById("data").innerHTML=resHeaders;
+        }
+    </script>
+</body>
+</html>
+```
+<br><br>
+___
+<b>auth.php</b>
+```
+<?php
+    if (!isset($_SERVER['PHP_AUTH_USER'])) {
+        header('WWW-Authenticate: Basic realm="My Realm"');
+        header('HTTP/1.0 401 Unauthorized');
+        echo 'The second round get user and pwd!';
+        exit;
+    } else if ($_SERVER['PHP_AUTH_USER'] == "admin" and $_SERVER['PHP_AUTH_PW'] =="1234"){
+        echo "You logged in!";
+    } else{
+        echo "User or psw aren't correct! <br>";
+        echo getallheaders(); 
+    }
+?>
+`
 
